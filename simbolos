@@ -1,0 +1,39 @@
+#definicíon de la tabla de símbolos como un diccionario
+symbol_table = {}
+
+#función para agregar un identificador y su valor a la tabla de símbolos
+def add_to_symbol_table(identifier,value):
+    symbol_table[identifier] = value
+
+#función paran buscar un identificador en la tabla de símbolos
+def lookup_in_symbol_table(identifier):
+    return symbol_table.get(identifier, None)
+
+#código de ejemplo para agregar y buscar identificadores en la tabla de símbolos
+add_to_symbol_table("x",10)
+add_to_symbol_table("y",50)
+add_to_symbol_table("z",'C')
+add_to_symbol_table(15,"F")
+add_to_symbol_table(14,"E")
+
+def iden(op):
+    #buscar un identificador en la tabla de símbolos
+    if op==1:
+        identifier_to_find=15
+    elif op==2:
+        identifier_to_find=14
+    #identifier_to_find=op
+    value = lookup_in_symbol_table(identifier_to_find)
+    if value is not None:
+        print(f"El valor de {identifier_to_find} es {value}")
+    else:
+        print(f"{identifier_to_find} no se encuentra en la tabla de símbolos")
+
+#menu
+while True:
+    op=int(input("\tMenu elige 1 ó 2, 3 para salir\n1.-Que valor tiene 15\n2.-Que valor tiene 14\n Ingresa una opción: "))
+    if op==3:
+        print("Gracias");
+        break
+    else:
+        iden(op)
