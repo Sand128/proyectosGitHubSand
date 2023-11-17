@@ -1,4 +1,4 @@
-""" #libreria
+#libreria
 import numpy as np
 
 def matriz1 (f):
@@ -69,7 +69,7 @@ menu()
 #             print(op3)   """
 
 
-import numpy as np
+""" import numpy as np
 l=0
 n =int (input("ingresa el numero Iteraciones =< 9 :"))
 #matriz=[l,l,l]
@@ -80,4 +80,4 @@ if n <=9 or n>0:
         print(x)
         l+=1
 print(l)
-
+ """

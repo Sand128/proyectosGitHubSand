@@ -15,6 +15,11 @@ for i in range(int(f)):
 print(m)
 print("Inversa de la matriz 1")
 print (np.linalg.inv(m))
+m_inv=np.linalg.inv(m)
+print(np.dot(m, m_inv))
+
+
+
 
 Matriz1 = np.array(m)#np es un objeto. y el array que se maneja un objeto
 #matriz columna de los terminos independientes
