@@ -1,0 +1,14 @@
+def ocurrencias(string):
+    mensaje=""
+    l=len(string)
+    cadena=string
+    a=string.count('0')
+    b=string.count('1')
+    if a>b:
+        mensaje="1"
+    elif a<b:
+        mensaje="0"
+    return mensaje
+  
+a="0101010101010111111111111111111110000001"
+print(ocurrencias(a))
