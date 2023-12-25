@@ -1,12 +1,19 @@
 def ocurrencias(string):
     mensaje=""
     l=len(string)
+    cont=0
+    sum1=0
+    sum0=0
     cadena=string
-    a=string.count('0')
-    b=string.count('1')
-    if a>b:
+    while cont<l:
+        if cadena[cont]=="1":
+            sum1=sum1+1
+        elif cadena[cont]=="0":
+            sum0=sum0+1
+        cont=cont+1
+    if sum1>sum0:
         mensaje="1"
-    elif a<b:
+    elif sum1<sum0:
         mensaje="0"
     return mensaje
   
