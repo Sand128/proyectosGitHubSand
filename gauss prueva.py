@@ -6,10 +6,10 @@ def matrizCo (f):
     for i in range(f):
         m[i] = [1]*int(f)
         for j in range(f):
-            m[i][j]= int(input(">"+str(i)+","+str(j)+" :"))
+            m[i][j]= float(input(">"+str(i)+","+str(j)+" :"))
     return m
 
-
+    
 def matriz1 (mat):
     f=len(np.array( mat))
     N = [0]*int(f)
@@ -43,54 +43,61 @@ def matrizRe (f):
         m[i][0]= int(input("<"+str(i)+","+str(0)+" :"))
     return m
 
-def sustitucion (op3):
-    f=len(np.array(op3))
+def sustitucion (n):
+    f=len(np.array(n))
     sus = [1]*int(f)
-    for i in range(int(f)):
-        sus[i] = [1]*int(1)
-        sus[i][0]=op3
+    for i in range(int (f)):
+        sus[i]=[1]*int (1)
+        sus[i][0]= n[i][0]
     return sus
+
+def Matrizresultados(Mcoe,n):
+    m1=np.array(Mcoe)
+    m2=np.array(n)
+    m=np.dot(m1,m2)
+    return m
+
 
 
 def menu():
-    num=int(input("[1. para Salir]\n\tMenu...\nIngresa la long de la Matriz: "))
     l=1
+    num=int(input("[1. para Salir]\n\tMenu...\nIngresa la long de la Matriz: "))
     if num==1:
         print("Gracias, Adios")  
     else:
-            matriz_ceros = np.zeros([num,1])
-            M= matrizCo(num)
-            N = np.array(matriz1(M))
-            P = np.array(matriz2(M))
-            b = np.array(matrizRe(num))
-            print ("\nValores de la multiplicación")
-            n =int (input("Ingresa el numero Iteraciones: "))
-            if n>0:
-                op1=np.dot(N,b)
-                op2=np.dot(N,P)
-                op3=op1+(np.dot(op2,matriz_ceros))
-                print(op3)               
-                while l <= n:
-                    print(op3)
-                    result=np.dot(M,op3)
-                    print(result)
-                    if (result == b).all():
-                        print(result)
-                        break
-                    else:
-                        print(" \t\tIteracion",l)
-                        op4=op1+(np.dot(op2,op3))
-                        op3=op4
-                        print(op4)
-                        #los resultados de la iteracion se sustitullen en la matris original ya que son x,y u z
-                        #con una condicional que se detenga cuando se aproxcime al resultado matrizRe
-                        l+=1  
-
-
-
-
-    
+            matriz_ceros = [0,0,0]
+            M= np.array(matrizCo(num))#print(M)
+            N = np.array(matriz1(M))#print(N)
+            P = np.array(matriz2(M))# print(P)
+            b = np.array(matrizRe(num))# print(b)
+            n=int(input("Numero de iteraciones: "))
+            l=1
+            if  n>0:
+                print ("\nValores de la multiplicación")
+                op1=np.dot(N,b)#print(op1)
+                op2=np.dot(N,P)#print(op2)
+                op3=np.dot(op2,matriz_ceros)#op3=op1+(np.dot(op2,matriz_ceros))
+                print("Valores de X,Y y Z\n",np.array(op3),"\n")#print(op3)
+                op4=op1+op3#print(op4)
+                op4=sustitucion(op4)#valores 
+                print("Valores de X,Y y Z\n",np.array(op4))#muestra los resultados de la primera operacion
+                x= np.array(Matrizresultados(M,op4))#multiplica los resultados op4 sustituyendolos en la funcion matrizCo (f):
+                print("Sustitucion en la ecuacion,\tIteracion #",l,"\n",np.array(sustitucion(x)))
+                #print("Sustitucion en la ecuacion,\tIteracion #",l,"\n",np.array(np.dot(M,x)))
+                while l<=n:
+                    l+=1
+                    op1=np.dot(N,x)
+                    op3=np.dot(op2,op4)
+                    op4=op1+op3
+                    #print("op3\n",op3)
+                    op4=sustitucion(op4)
+                    #print("op4\n",op4)
+                    print("Valores de X, Y y Z\n",np.array(sustitucion(op4)))
+                    x= np.array(Matrizresultados(M,op4))
+                    print("Sustitucion en la ecuacion,\tIteracion #",l,"\n",np.array(sustitucion(x)))
+                     
 print("¡¡¡¡Bienvenido!!!!") 
 menu()
+
 
 
