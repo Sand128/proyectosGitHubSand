@@ -1,11 +1,7 @@
-
-def mezclador(string_a, string_b):
-  l=string_a
-  l2=string_b
-  b=l[0:2]+l2[7:9]
-  return b
-
-a="familia"
-b="abrigarse"
-print(mezclador(a,b))
-
+def mezclador(str1, str2):
+    if len(str1) < 2 or len(str2) < 2:  # Si los string no son lo suficientemente largos
+        return "Los string deben de ser de largo > 2"
+    str_resultado = str1[0:2] + str2[-2:]
+    return str_resultado
+  
+print(mezclador("familia","abrigarse"))
