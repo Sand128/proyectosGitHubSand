@@ -56,6 +56,19 @@ while opcion != 0:
         num_amigos = Red.obtener_num_amigos()
         Red.mostrar_perfil(nombre, edad, estatura_m, estatura_cm, sexo, pais, num_amigos)
 
+    elif opcion == 5:
+        nombre = Red.cambiar_nombre()
+        #Verificamos si el archivo existe
+        if Red.existe_archivo(nombre+".user"):
+            #Esto lo hacemos si ya habÃ­a un usuario con ese nombre
+            print("Leyendo datos de usuario", nombre, "desde archivo.")
+            #(nombre, edad, estatura_m, estatura_cm, sexo, pais, num_amigos, estado) = Red.leer_usuario(nombre)
+            Red.mostrar_perfil(nombre, edad, estatura_m, estatura_cm, sexo, pais, num_amigos)
+
+        else:
+            #En caso que el usuario no exista, consultamos por sus datos tal como lo hacÃ­amos antes
+            print("No existe")
+            
     elif opcion == 0:
         print("Has decidido salir. Guardando perfil en ",nombre+".user")
         Red.escribir_usuario(nombre, edad, estatura_m, estatura_cm, sexo, pais, num_amigos, estado)
