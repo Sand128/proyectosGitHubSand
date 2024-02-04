@@ -1,26 +1,20 @@
-#import statistics as stats
 from math import sqrt
 import numpy as np
 def promedio_std(lista):
-    nwlista=[]
     n=len(lista)
     sum=0
     for elem in lista:
         sum=elem+sum
-    #print(sum)
     x=sum/n#promedio listo y tambien U para la desviacion estandar
-    #print(x)
+    z=0
     for elem in lista:
-        nwlista.append((elem-x)*(elem-x))
-    #print(np.sum(nwlista))  
-    a=(np.sum(nwlista))/n
-    #print(a)
-    y=sqrt(a)
+        a=(elem-x)*(elem-x)
+        z=z+a
+    b=z/n
+    y=b**0.5
     return(x,y)
 lista = [81, 14, 45, 72, 57, 15, 67, 80, 40, 46, 19, 76, 87, 33, 56]
-print(len(lista))
 print(promedio_std(lista))
-
 
 
 """
